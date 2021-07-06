@@ -28,7 +28,7 @@ const config = merge(common, {
     plugins: [
         new HTMLWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, `../public/index.html`),
+            template: path.resolve(__dirname, `../src/index.html`),
 
             minify: {
                 removeComments: true,
