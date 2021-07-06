@@ -65,16 +65,7 @@ const config: Configuration = {
         filename: `bundle.min.js`
     },
 
-    devServer: {
-        contentBase: path.resolve(__dirname, `../public`),
-        historyApiFallback: true,
-        port: 3000,
-        publicPath: `http://localhost:3000/dist`,
-        hotOnly: true
-    },
-
     plugins: [
-        new Webpack.HotModuleReplacementPlugin(),
         new Webpack.ProgressPlugin()
     ]
 };
