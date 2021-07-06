@@ -8,13 +8,19 @@ const config = merge(common, {
     mode: `production`,
 
     output: {
-        filename: `[name].bundle.js`,
-        path: path.resolve(__dirname, `dist`)
+        path: path.resolve(__dirname, `../dist/static/js`),
+        filename: `[name].[contenthash:8].js`,
+        chunkFilename: `[name].[contenthash:8].chunk.js`
     },
 
     optimization: {
         splitChunks: {
-            chunks: `all`
+            chunks: `all`,
+            name: false
+        },
+
+        runtimeChunk: {
+            name: (entrypoint: any) => `runtime-${entrypoint.name}`
         }
     }
 });
