@@ -1,7 +1,7 @@
 import merge from 'webpack-merge';
-import HTMLWebpackPlugin from 'html-webpack-plugin';
-
 import common from './webpack.common';
+
+import HTMLWebpackPlugin from 'html-webpack-plugin';
 
 import * as path from 'path';
 
@@ -9,9 +9,9 @@ const config = merge(common, {
     mode: `production`,
 
     output: {
-        path: path.resolve(__dirname, `../dist/static/js`),
-        filename: `[name].[contenthash:8].js`,
-        chunkFilename: `[name].[contenthash:8].chunk.js`
+        path: path.resolve(__dirname, `../dist`),
+        filename: `static/js/[name].[contenthash:8].js`,
+        chunkFilename: `static/js/[name].[contenthash:8].chunk.js`
     },
 
     optimization: {
