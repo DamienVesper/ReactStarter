@@ -1,4 +1,5 @@
 import merge from 'webpack-merge';
+import HTMLWebpackPlugin from 'html-webpack-plugin';
 
 import common from './webpack.common';
 
@@ -22,7 +23,27 @@ const config = merge(common, {
         runtimeChunk: {
             name: (entrypoint: any) => `runtime-${entrypoint.name}`
         }
-    }
+    },
+
+    plugins: [
+        new HTMLWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, `../public/index.html`),
+
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+            }
+        })
+    ]
 });
 
 export default config;
