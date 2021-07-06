@@ -13,17 +13,21 @@ const config = merge(common, {
     plugins: [
         new HTMLWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, `../src/index.html`),
-            filename: path.resolve(__dirname, `../public/index.html`)
+            template: path.resolve(__dirname, `../src/index.html`)
         }),
         new Webpack.HotModuleReplacementPlugin()
     ],
+
+    output: {
+        path: path.resolve(__dirname, `../dist`),
+        filename: `bundle.min.js`
+    },
 
     devServer: {
         contentBase: path.resolve(__dirname, `../public`),
         historyApiFallback: true,
         port: 3000,
-        publicPath: `http://localhost:3000/dist`,
+        publicPath: `http://localhost:3000`,
         hotOnly: true
     }
 });

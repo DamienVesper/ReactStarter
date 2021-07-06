@@ -59,12 +59,6 @@ const config: Configuration = {
         extensions: [`*`, `.js`, `.jsx`, `.ts`, `.tsx`]
     },
 
-    output: {
-        path: path.resolve(__dirname, `../dist`),
-        publicPath: `/dist`,
-        filename: `bundle.min.js`
-    },
-
     plugins: [
         new Webpack.ProgressPlugin()
     ]
