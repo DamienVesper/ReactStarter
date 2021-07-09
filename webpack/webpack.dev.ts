@@ -10,6 +10,23 @@ const config = merge(common, {
     mode: `development`,
     devtool: `source-map`,
 
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    `style-loader`,
+                    `css-loader`,
+                    `sass-loader`
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [`style-loader`, `css-loader`]
+            }
+        ]
+    },
+
     plugins: [
         new HTMLWebpackPlugin({
             inject: true,

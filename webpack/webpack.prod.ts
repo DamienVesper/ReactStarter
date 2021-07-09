@@ -2,11 +2,24 @@ import merge from 'webpack-merge';
 import common from './webpack.common';
 
 import HTMLWebpackPlugin from 'html-webpack-plugin';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
+
+import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
+import CSSMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 import * as path from 'path';
 
 const config = merge(common, {
     mode: `production`,
+
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [MiniCSSExtractPlugin.loader, `css-loader`, `sass-loader`]
+            }
+        ]
+    },
 
     output: {
         path: path.resolve(__dirname, `../dist`),
@@ -22,7 +35,12 @@ const config = merge(common, {
 
         runtimeChunk: {
             name: (entrypoint: any) => `runtime-${entrypoint.name}`
-        }
+        },
+
+        minimizer: [
+            `...`,
+            new CSSMinimizerPlugin()
+        ]
     },
 
     plugins: [
@@ -42,7 +60,9 @@ const config = merge(common, {
                 minifyCSS: true,
                 minifyURLs: true
             }
-        })
+        }),
+        new WebpackManifestPlugin(),
+        new MiniCSSExtractPlugin()
     ]
 });
 
