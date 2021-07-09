@@ -2,6 +2,7 @@ import merge from 'webpack-merge';
 import common from './webpack.common';
 
 import * as Webpack from 'webpack';
+
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 
 import * as path from 'path';
@@ -30,7 +31,7 @@ const config = merge(common, {
     plugins: [
         new HTMLWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, `../src/index.html`)
+            template: path.resolve(__dirname, `../public/index.html`)
         }),
         new Webpack.HotModuleReplacementPlugin()
     ],
