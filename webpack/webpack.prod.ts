@@ -39,7 +39,11 @@ const config = merge(common, {
 
         minimizer: [
             `...`,
-            new CSSMinimizerPlugin()
+            new CSSMinimizerPlugin({
+                minimizerOptions: {
+                    preset: [`default`, { discardComments: { removeAll: true } }]
+                }
+            })
         ]
     },
 
