@@ -51,6 +51,7 @@ const config = merge(common, {
         new HTMLWebpackPlugin({
             inject: true,
             template: path.resolve(__dirname, `../public/index.html`),
+            // favicon: `./public/assets/img/logos/favicon.png`, // NOTE: This has to be a relative path from root.
 
             minify: {
                 removeComments: true,
