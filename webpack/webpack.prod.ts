@@ -66,7 +66,7 @@ const config = merge(common, {
                 minifyURLs: true
             }
         }),
-        new WebpackManifestPlugin(),
+        new WebpackManifestPlugin({}),
         new MiniCSSExtractPlugin()
     ]
 });
